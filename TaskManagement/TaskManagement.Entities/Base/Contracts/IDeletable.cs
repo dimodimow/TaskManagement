@@ -4,9 +4,9 @@ using System.Text;
 
 namespace TaskManagement.Entities.Base.Contracts
 {
-   public interface IAuditable
+    public interface IDeletable
     {
-        DateTime? CreatedOn { get; set; }
-        DateTime? ModifiedOn { get; set; }
+        DateTime? DeletedOn { get; set; }
+        bool IsDeleted { get; set; }
     }
 }
