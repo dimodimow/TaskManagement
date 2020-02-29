@@ -10,7 +10,7 @@ using TaskManagement.Data.Context;
 namespace TaskManagement.Data.Migrations
 {
     [DbContext(typeof(TaskContext))]
-    [Migration("20200229014254_Initial")]
+    [Migration("20200229192729_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -203,7 +203,7 @@ namespace TaskManagement.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TypeCommentId")
+                    b.Property<int>("TypeCommentId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
@@ -279,10 +279,10 @@ namespace TaskManagement.Data.Migrations
                     b.Property<DateTime?>("NextActionDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("StatusTaskId")
+                    b.Property<int>("StatusTaskId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TypeTaskId")
+                    b.Property<int>("TypeTaskId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -432,13 +432,13 @@ namespace TaskManagement.Data.Migrations
                         {
                             Id = "69e7930c-3df5-4261-99cf-0352eb018a91",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4ec1b7d1-aa17-494a-8084-8c577ceda06f",
+                            ConcurrencyStamp = "6cc2c8db-db8a-4dac-bba7-42e141b2568b",
                             Email = "dimo@manager.com",
                             EmailConfirmed = false,
                             LockoutEnabled = true,
                             NormalizedEmail = "DIMO@MANAGER.COM",
                             NormalizedUserName = "DIMO@MANAGER.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAECRw08gdbbUcBVAxYkTFMs2VCUxg3oy2NSi72vDwCcbQU+x9eQcbg2d40EE0Ox2pew==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKH4DX5dU7qWqgeelqc/gAR+X5T81YDes0Zno+Heh7JQ9c9YTiWmDVT/dGTn9QTvzA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXN",
                             TwoFactorEnabled = false,
@@ -448,13 +448,13 @@ namespace TaskManagement.Data.Migrations
                         {
                             Id = "9009a034-7f66-455f-b76f-4f873dc93741",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9130c2ad-4576-4176-a602-305e6365e169",
+                            ConcurrencyStamp = "8cccf8eb-f8c6-4432-9454-4fea82c078f7",
                             Email = "gosho@employee.com",
                             EmailConfirmed = false,
                             LockoutEnabled = true,
                             NormalizedEmail = "GOSHO@EMPLOYEE.COM",
                             NormalizedUserName = "GOSHO@EMPLOYEE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAECVGCQ41gh5Gh/KPw0ZimKI1W4YpQeS+sGWs2FUwey7UpN6BBKsr4hlpdO0aYrdKLA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBKbtaZ/QwEiTlnQTiVMy5V7sLM4y+nYrVZFEB9VIA50HT+cHLVeKfyrRFF8d9g4Lg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNUUV5PVYBHGXN",
                             TwoFactorEnabled = false,
@@ -464,13 +464,13 @@ namespace TaskManagement.Data.Migrations
                         {
                             Id = "4a55904b-910e-46c3-8df7-a138a2b73a8a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6dfd25d6-6ecb-46d2-a5e6-9518df55edd3",
+                            ConcurrencyStamp = "d7d7ca46-7453-46c0-82fe-f0a8c1746f75",
                             Email = "pesho@employee.com",
                             EmailConfirmed = false,
                             LockoutEnabled = true,
                             NormalizedEmail = "PESHO@EMPLOYEE.COM",
                             NormalizedUserName = "PESHO@EMPLOYEE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIgjQxGmuea4hKWabpUmCrC/lKOSUiP/hqJO1dC6y9e/oanil0/vlMjJX9BCv0oa6g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDUjjK2vlnFf+gE+BPbIxvrRgA7vHrfY2qupXW/LsYjA3ayYtpjrSCVk90OYhHFv1g==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNULV5PVYBHGXN",
                             TwoFactorEnabled = false,
@@ -503,14 +503,14 @@ namespace TaskManagement.Data.Migrations
                         new
                         {
                             Id = "a5e38752-84ae-4352-a0b6-bf47b3fd460a",
-                            ConcurrencyStamp = "a6f7ccef-02ce-47ed-b4ed-78f885e1a451",
+                            ConcurrencyStamp = "02f3c278-1112-4ca1-aa3a-aa90d4777031",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
                             Id = "d90e75c6-7da9-490e-aeb0-3d8c4827e193",
-                            ConcurrencyStamp = "4f5a30b2-ec3a-4922-909d-6097857e6267",
+                            ConcurrencyStamp = "c7100f0c-e55b-4672-b95d-d5ce90e578b5",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -575,9 +575,11 @@ namespace TaskManagement.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TaskManagement.Entities.TypeComment", null)
+                    b.HasOne("TaskManagement.Entities.TypeComment", "Type")
                         .WithMany("Comments")
-                        .HasForeignKey("TypeCommentId");
+                        .HasForeignKey("TypeCommentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TaskManagement.Entities.User", "User")
                         .WithMany("Comments")
@@ -586,13 +588,17 @@ namespace TaskManagement.Data.Migrations
 
             modelBuilder.Entity("TaskManagement.Entities.Task", b =>
                 {
-                    b.HasOne("TaskManagement.Entities.StatusTask", null)
+                    b.HasOne("TaskManagement.Entities.StatusTask", "Status")
                         .WithMany("Tasks")
-                        .HasForeignKey("StatusTaskId");
+                        .HasForeignKey("StatusTaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("TaskManagement.Entities.TypeTask", null)
+                    b.HasOne("TaskManagement.Entities.TypeTask", "Type")
                         .WithMany("Tasks")
-                        .HasForeignKey("TypeTaskId");
+                        .HasForeignKey("TypeTaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TaskManagement.Entities.UserTask", b =>

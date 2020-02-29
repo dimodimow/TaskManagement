@@ -204,8 +204,8 @@ namespace TaskManagement.Data.Migrations
                     DueDate = table.Column<DateTime>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     NextActionDate = table.Column<DateTime>(nullable: true),
-                    StatusTaskId = table.Column<int>(nullable: true),
-                    TypeTaskId = table.Column<int>(nullable: true)
+                    TypeTaskId = table.Column<int>(nullable: false),
+                    StatusTaskId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -215,13 +215,13 @@ namespace TaskManagement.Data.Migrations
                         column: x => x.StatusTaskId,
                         principalTable: "TaskStatuses",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Tasks_TaskTypes_TypeTaskId",
                         column: x => x.TypeTaskId,
                         principalTable: "TaskTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -237,7 +237,7 @@ namespace TaskManagement.Data.Migrations
                     ReminderDate = table.Column<DateTime>(nullable: true),
                     TaskId = table.Column<Guid>(nullable: false),
                     UserId = table.Column<string>(nullable: true),
-                    TypeCommentId = table.Column<int>(nullable: true)
+                    TypeCommentId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -253,7 +253,7 @@ namespace TaskManagement.Data.Migrations
                         column: x => x.TypeCommentId,
                         principalTable: "CommentTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Comments_AspNetUsers_UserId",
                         column: x => x.UserId,
@@ -291,8 +291,8 @@ namespace TaskManagement.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Discriminator", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "a5e38752-84ae-4352-a0b6-bf47b3fd460a", "a6f7ccef-02ce-47ed-b4ed-78f885e1a451", "UserRole", "Manager", "MANAGER" },
-                    { "d90e75c6-7da9-490e-aeb0-3d8c4827e193", "4f5a30b2-ec3a-4922-909d-6097857e6267", "UserRole", "Employee", "EMPLOYEE" }
+                    { "a5e38752-84ae-4352-a0b6-bf47b3fd460a", "02f3c278-1112-4ca1-aa3a-aa90d4777031", "UserRole", "Manager", "MANAGER" },
+                    { "d90e75c6-7da9-490e-aeb0-3d8c4827e193", "c7100f0c-e55b-4672-b95d-d5ce90e578b5", "UserRole", "Employee", "EMPLOYEE" }
                 });
 
             migrationBuilder.InsertData(
@@ -300,9 +300,9 @@ namespace TaskManagement.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "69e7930c-3df5-4261-99cf-0352eb018a91", 0, "4ec1b7d1-aa17-494a-8084-8c577ceda06f", "dimo@manager.com", false, true, null, "DIMO@MANAGER.COM", "DIMO@MANAGER.COM", "AQAAAAEAACcQAAAAECRw08gdbbUcBVAxYkTFMs2VCUxg3oy2NSi72vDwCcbQU+x9eQcbg2d40EE0Ox2pew==", null, false, "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXN", false, "dimo@manager.com" },
-                    { "9009a034-7f66-455f-b76f-4f873dc93741", 0, "9130c2ad-4576-4176-a602-305e6365e169", "gosho@employee.com", false, true, null, "GOSHO@EMPLOYEE.COM", "GOSHO@EMPLOYEE.COM", "AQAAAAEAACcQAAAAECVGCQ41gh5Gh/KPw0ZimKI1W4YpQeS+sGWs2FUwey7UpN6BBKsr4hlpdO0aYrdKLA==", null, false, "7I5VNHIJTSZNOT3KDWKNUUV5PVYBHGXN", false, "gosho@employee.com" },
-                    { "4a55904b-910e-46c3-8df7-a138a2b73a8a", 0, "6dfd25d6-6ecb-46d2-a5e6-9518df55edd3", "pesho@employee.com", false, true, null, "PESHO@EMPLOYEE.COM", "PESHO@EMPLOYEE.COM", "AQAAAAEAACcQAAAAEIgjQxGmuea4hKWabpUmCrC/lKOSUiP/hqJO1dC6y9e/oanil0/vlMjJX9BCv0oa6g==", null, false, "7I5VNHIJTSZNOT3KDWKNULV5PVYBHGXN", false, "pesho@employee.com" }
+                    { "69e7930c-3df5-4261-99cf-0352eb018a91", 0, "6cc2c8db-db8a-4dac-bba7-42e141b2568b", "dimo@manager.com", false, true, null, "DIMO@MANAGER.COM", "DIMO@MANAGER.COM", "AQAAAAEAACcQAAAAEKH4DX5dU7qWqgeelqc/gAR+X5T81YDes0Zno+Heh7JQ9c9YTiWmDVT/dGTn9QTvzA==", null, false, "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXN", false, "dimo@manager.com" },
+                    { "9009a034-7f66-455f-b76f-4f873dc93741", 0, "8cccf8eb-f8c6-4432-9454-4fea82c078f7", "gosho@employee.com", false, true, null, "GOSHO@EMPLOYEE.COM", "GOSHO@EMPLOYEE.COM", "AQAAAAEAACcQAAAAEBKbtaZ/QwEiTlnQTiVMy5V7sLM4y+nYrVZFEB9VIA50HT+cHLVeKfyrRFF8d9g4Lg==", null, false, "7I5VNHIJTSZNOT3KDWKNUUV5PVYBHGXN", false, "gosho@employee.com" },
+                    { "4a55904b-910e-46c3-8df7-a138a2b73a8a", 0, "d7d7ca46-7453-46c0-82fe-f0a8c1746f75", "pesho@employee.com", false, true, null, "PESHO@EMPLOYEE.COM", "PESHO@EMPLOYEE.COM", "AQAAAAEAACcQAAAAEDUjjK2vlnFf+gE+BPbIxvrRgA7vHrfY2qupXW/LsYjA3ayYtpjrSCVk90OYhHFv1g==", null, false, "7I5VNHIJTSZNOT3KDWKNULV5PVYBHGXN", false, "pesho@employee.com" }
                 });
 
             migrationBuilder.InsertData(
