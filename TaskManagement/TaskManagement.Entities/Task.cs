@@ -11,6 +11,10 @@ namespace TaskManagement.Entities
         public ICollection<UserTask> UserTasks { get; set; }
         public DateTime? NextActionDate { get; set; }
         public ICollection<Comment> Comments { get; set; }
+        public int TypeTaskId { get; set; }
+        public TypeTask Type { get; set; }
+        public int StatusTaskId { get; set; }
+        public StatusTask Status { get; set; }
 
     }
 }
