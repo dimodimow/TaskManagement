@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TaskManagement.Data.Context;
 using TaskManagement.Entities;
+using TaskManagement.Services.Contracts;
+using TaskManagement.Services;
 
 namespace TaskManagement
 {
@@ -26,8 +28,16 @@ namespace TaskManagement
             services.AddDbContext<TaskContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<TaskContext>();
+
+            services.AddIdentity<User, UserRole>()
+                .AddEntityFrameworkStores<TaskContext>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders();
+
+            #region ServiceLayer Configuration
+            services.AddScoped<ITaskService, TaskService>();
+            services.AddScoped<ICommentService, CommentService>();
+            #endregion
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
