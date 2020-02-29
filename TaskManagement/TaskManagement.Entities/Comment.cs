@@ -14,5 +14,7 @@ namespace TaskManagement.Entities
         public Task Task { get; set; }
         public string UserId { get; set; }
         public User User { get; set; }
+        public int TypeCommentId { get; set; }
+        public TypeComment Type { get; set; }
     }
 }
