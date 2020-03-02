@@ -1,0 +1,74 @@
+﻿@model IEnumerable<TaskViewModel>
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Tasks</h1>
+@if (User.IsInRole("Manager"))
+{
+
+<div class="col col-sm-2 text-left ">
+    <p>
+        <a class="btn btn-outline-primary" title="Create a task" asp-controller="Task" asp-action="Create"><i class="fas fa-book"></i><b> Create</b></a>
+    </p>
+</div>
+
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="shadow p-3 mb-5 bg-white rounded">
+            <table class="table table-striped table-hover">
+
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TaskName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DueTime)
+                        </th>
+                        <th>
+                            Type
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TaskName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DueTime)
+                            </td>
+
+                            <td>@(((TaskType)item.TypeTaskId).ToString())</td>
+
+                            <td>@(((TaskStatuses)item.StatusTaskId).ToString())</td>
+
+                            <td>
+                                <a asp-controller="Theatre" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+
+                                <a asp-controller="Theatre" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            @*</div>*@
+        </div>
+        @*</div>*@
+    </div>
+</div>
