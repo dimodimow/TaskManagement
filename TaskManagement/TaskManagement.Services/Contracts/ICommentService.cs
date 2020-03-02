@@ -7,7 +7,7 @@ namespace TaskManagement.Services.Contracts
 {
     public interface ICommentService
     {
-        Task<Comment> CreateComment(string text, string userId, DateTime? reminderDate);
+        Task<Comment> CreateComment(string text, string userId, DateTime? reminderDate, int typeCommentId);
         Task<List<Comment>> GetAllComments(Guid taskId);
     }
 }
