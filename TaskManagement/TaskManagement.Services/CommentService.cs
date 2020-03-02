@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TaskManagement.Data.Context;
 using TaskManagement.Entities;
 using TaskManagement.Services.Contracts;
+using TaskManagement.Services.Util;
 
 namespace TaskManagement.Services
 {
@@ -17,8 +18,10 @@ namespace TaskManagement.Services
         {
             this.context = context;
         }
-        public async Task<Comment> CreateComment(string text, string userId, DateTime? reminderDate)
+        public async Task<Comment> CreateComment(string text, string userId, DateTime? reminderDate, int typeCommentId)
         {
+            ValidationComment.ValidateCommentTextIfIsNullOrEmpty(text);
+
             var currentUser = await this.context.Users
                 .FirstOrDefaultAsync(u => u.Id == userId);
 
@@ -30,6 +33,7 @@ namespace TaskManagement.Services
                     Text = text,
                     UserId = userId,
                     CreatedOn = DateTime.Now,
+                    TypeCommentId = typeCommentId,
                     User = currentUser,
                     ReminderDate = reminderDate
                 };
@@ -43,13 +47,13 @@ namespace TaskManagement.Services
         public async Task<List<Comment>> GetAllComments(Guid taskId)
         {
             return await this.context.Comments
-                .Include(x => x.User)
+                .Include(x => x.User.UserName)
                 .Where(x => x.TaskId == taskId)
                 .ToListAsync();
         }
         public async Task<bool> DeleteComment(Guid commentId)
         {
-            var comment = await this.context.Comments.FirstOrDefaultAsync(comment => comment.Id == commentId);
+            var comment = await this.context.Comments.FirstOrDefaultAsync(c => c.Id == commentId);
 
             if (comment == null)
             {
@@ -63,7 +67,9 @@ namespace TaskManagement.Services
 
         public async Task<Comment> EditComment(Guid commentId, string text, string userId, DateTime? reminderDate)
         {
-            var comment = await this.context.Comments.Include(x=>x.Task).FirstOrDefaultAsync(comment => comment.Id == commentId);
+            ValidationComment.ValidateCommentTextIfIsNullOrEmpty(text);
+            var comment = await this.context.Comments.Include(x=>x.Task).FirstOrDefaultAsync(c => c.Id == commentId);
+
             if (comment == null)
             {
                  throw new ArgumentException("Comment does not exist");
@@ -76,10 +82,6 @@ namespace TaskManagement.Services
                 throw new ArgumentException("User can not edit this comment because somebody else. ");
             }
 
-            if(string.IsNullOrWhiteSpace(text))
-            {
-                throw new NotImplementedException();
-            }
             comment.Text = text;
             comment.ModifiedOn = DateTime.Now;
             comment.ReminderDate = reminderDate;
