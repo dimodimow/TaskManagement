@@ -201,11 +201,14 @@ namespace TaskManagement.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
+                    TaskName = table.Column<string>(nullable: true),
                     DueDate = table.Column<DateTime>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     NextActionDate = table.Column<DateTime>(nullable: true),
                     TypeTaskId = table.Column<int>(nullable: false),
-                    StatusTaskId = table.Column<int>(nullable: false)
+                    StatusTaskId = table.Column<int>(nullable: false),
+                    UserId1 = table.Column<string>(nullable: true),
+                    UserId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -222,6 +225,12 @@ namespace TaskManagement.Data.Migrations
                         principalTable: "TaskTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Tasks_AspNetUsers_UserId1",
+                        column: x => x.UserId1,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -291,8 +300,8 @@ namespace TaskManagement.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Discriminator", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "a5e38752-84ae-4352-a0b6-bf47b3fd460a", "02f3c278-1112-4ca1-aa3a-aa90d4777031", "UserRole", "Manager", "MANAGER" },
-                    { "d90e75c6-7da9-490e-aeb0-3d8c4827e193", "c7100f0c-e55b-4672-b95d-d5ce90e578b5", "UserRole", "Employee", "EMPLOYEE" }
+                    { "a5e38752-84ae-4352-a0b6-bf47b3fd460a", "452cd0d2-e6b8-4444-bf4d-66286bdf93f2", "UserRole", "Manager", "MANAGER" },
+                    { "d90e75c6-7da9-490e-aeb0-3d8c4827e193", "253c6fcb-80d8-4407-8454-7d7231f4e967", "UserRole", "Employee", "EMPLOYEE" }
                 });
 
             migrationBuilder.InsertData(
@@ -300,9 +309,9 @@ namespace TaskManagement.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "69e7930c-3df5-4261-99cf-0352eb018a91", 0, "6cc2c8db-db8a-4dac-bba7-42e141b2568b", "dimo@manager.com", false, true, null, "DIMO@MANAGER.COM", "DIMO@MANAGER.COM", "AQAAAAEAACcQAAAAEKH4DX5dU7qWqgeelqc/gAR+X5T81YDes0Zno+Heh7JQ9c9YTiWmDVT/dGTn9QTvzA==", null, false, "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXN", false, "dimo@manager.com" },
-                    { "9009a034-7f66-455f-b76f-4f873dc93741", 0, "8cccf8eb-f8c6-4432-9454-4fea82c078f7", "gosho@employee.com", false, true, null, "GOSHO@EMPLOYEE.COM", "GOSHO@EMPLOYEE.COM", "AQAAAAEAACcQAAAAEBKbtaZ/QwEiTlnQTiVMy5V7sLM4y+nYrVZFEB9VIA50HT+cHLVeKfyrRFF8d9g4Lg==", null, false, "7I5VNHIJTSZNOT3KDWKNUUV5PVYBHGXN", false, "gosho@employee.com" },
-                    { "4a55904b-910e-46c3-8df7-a138a2b73a8a", 0, "d7d7ca46-7453-46c0-82fe-f0a8c1746f75", "pesho@employee.com", false, true, null, "PESHO@EMPLOYEE.COM", "PESHO@EMPLOYEE.COM", "AQAAAAEAACcQAAAAEDUjjK2vlnFf+gE+BPbIxvrRgA7vHrfY2qupXW/LsYjA3ayYtpjrSCVk90OYhHFv1g==", null, false, "7I5VNHIJTSZNOT3KDWKNULV5PVYBHGXN", false, "pesho@employee.com" }
+                    { "69e7930c-3df5-4261-99cf-0352eb018a91", 0, "457356ea-936d-4522-9962-bbda4449eb87", "dimo@manager.com", false, true, null, "DIMO@MANAGER.COM", "DIMO@MANAGER.COM", "AQAAAAEAACcQAAAAENnyIrFyj2n6bTLduT/DAqwDuLp+XGZvkfEBXpFvWQR9eEUGN5ALcvQyKbjo3+G49w==", null, false, "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXN", false, "dimo@manager.com" },
+                    { "9009a034-7f66-455f-b76f-4f873dc93741", 0, "b04e01fd-4817-4308-af85-00280fe23868", "gosho@employee.com", false, true, null, "GOSHO@EMPLOYEE.COM", "GOSHO@EMPLOYEE.COM", "AQAAAAEAACcQAAAAEGr5oOZhaOTReZa9CCaQ+KaEIoYOVcstJdB6+N+JEHp4A2qemIZjMmgXXcCBBvy3cQ==", null, false, "7I5VNHIJTSZNOT3KDWKNUUV5PVYBHGXN", false, "gosho@employee.com" },
+                    { "4a55904b-910e-46c3-8df7-a138a2b73a8a", 0, "382b084d-36f0-4485-a4e1-6ce540629637", "pesho@employee.com", false, true, null, "PESHO@EMPLOYEE.COM", "PESHO@EMPLOYEE.COM", "AQAAAAEAACcQAAAAEPwI6azq0HAIA3Y5t0KFNSLHLWy2K1XBQizh0uH1S0rH9Lnw1kbkP1cSDlBDRFR1iQ==", null, false, "7I5VNHIJTSZNOT3KDWKNULV5PVYBHGXN", false, "pesho@employee.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -416,6 +425,11 @@ namespace TaskManagement.Data.Migrations
                 column: "TypeTaskId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Tasks_UserId1",
+                table: "Tasks",
+                column: "UserId1");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_UserTasks_TaskId",
                 table: "UserTasks",
                 column: "TaskId");
@@ -454,13 +468,13 @@ namespace TaskManagement.Data.Migrations
                 name: "Tasks");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
                 name: "TaskStatuses");
 
             migrationBuilder.DropTable(
                 name: "TaskTypes");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
         }
     }
 }
