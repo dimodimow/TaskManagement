@@ -10,6 +10,9 @@ using TaskManagement.Data.Context;
 using TaskManagement.Entities;
 using TaskManagement.Services.Contracts;
 using TaskManagement.Services;
+using TaskManagement.Web.Mappers.Contracts;
+using TaskManagement.Web.Models;
+using TaskManagement.Web.Mappers;
 
 namespace TaskManagement
 {
@@ -37,7 +40,12 @@ namespace TaskManagement
             #region ServiceLayer Configuration
             services.AddScoped<ITaskService, TaskService>();
             services.AddScoped<ICommentService, CommentService>();
+
+            services.AddSingleton<IMapper<TaskViewModel, Task>, TaskMapper>();
+            services.AddSingleton<IMapper<CommentViewModel, Comment>, CommentMapper>();
             #endregion
+
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
