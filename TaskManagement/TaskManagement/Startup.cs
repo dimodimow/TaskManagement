@@ -40,6 +40,7 @@ namespace TaskManagement
             #region ServiceLayer Configuration
             services.AddScoped<ITaskService, TaskService>();
             services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<IUserService, UserService>();
 
             services.AddSingleton<IMapper<TaskViewModel, Task>, TaskMapper>();
             services.AddSingleton<IMapper<CommentViewModel, Comment>, CommentMapper>();
