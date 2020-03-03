@@ -59,12 +59,7 @@
                             <td>@(((TaskStatuses)item.StatusTask).ToString())</td>
 
                             <td>
-                                    <a asp-controller="Task" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                              
-                                @if (User.IsInRole("Manager"))
-                                {
-                                    <a asp-controller="Task" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                                }
+                               <a class="btn btn-primary" asp-controller="Task" asp-action="Details" asp-route-id="@item.Id">Details</a>
                             </td>
                         </tr>
                     }

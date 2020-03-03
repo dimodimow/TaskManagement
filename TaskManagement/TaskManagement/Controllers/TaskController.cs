@@ -86,7 +86,7 @@ namespace TaskManagement.Web.Controllers
                 return this.View();
             }
             var allUsers = await this.userService.GetAllUsersForTaskAsync(taskViewModel.Id);
-            await this.taskService.EditTask(taskViewModel.Id, taskViewModel.TaskName, taskViewModel.Description, taskViewModel.DueTime, allUsers);
+            await this.taskService.EditTask(taskViewModel.Id, taskViewModel.TaskName, taskViewModel.Description,taskViewModel.DueTime, taskViewModel.StatusTask,allUsers);
 
             return RedirectToAction("Index", "Task");
         }
@@ -95,10 +95,9 @@ namespace TaskManagement.Web.Controllers
         public async Task<IActionResult> Details(Guid id)
         {
             Entities.Task task = await this.taskService.FindTaskById(id);
-            await this.userService.GetSelectedUsersAsync();
             TaskViewModel taskViewModel = this.taskMapper.Map(task);
-            var allUsers = this.userService.GetAllUsersAsync();
-            taskViewModel.AllUsers = await allUsers;
+            var allUsers = await this.userService.GetSelectedUsersAsync(id);
+            taskViewModel.AllUsers = allUsers;
             return View(taskViewModel);
         }
     }

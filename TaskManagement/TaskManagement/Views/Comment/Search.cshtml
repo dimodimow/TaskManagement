@@ -1,0 +1,57 @@
+﻿@model SearchListCommentViewModel
+
+
+@{
+    ViewData["Title"] = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Search</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                User
+            </th>
+            <th>
+                Comment
+            </th>
+            <th>
+                Reminder Date
+            </th>
+            <th>
+                Comment Type
+            </th>
+            <th>
+                Task
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CommentViewModels)
+        {
+            <tr>
+                <td>
+                    @item.UserName
+                </td>
+
+                <td>
+                    @item.Text
+                </td>
+
+                <td>
+                    @item.ReminderDate
+                </td>
+
+                <td>
+                    @(((CommentType)item.TypeCommentId).ToString())
+                </td>
+                <td>
+                    <a asp-controller="Task" asp-action="Details" asp-route-id="@item.TaskId">Go to Task</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

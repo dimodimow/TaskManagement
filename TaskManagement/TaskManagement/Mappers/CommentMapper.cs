@@ -12,10 +12,12 @@ namespace TaskManagement.Web.Mappers
             {
                 Id = entity.Id,
                 Text = entity.Text,
+                UserId = entity.UserId,
                 TypeCommentId = entity.TypeCommentId,
                 ReminderDate = entity.ReminderDate,
                 TaskId = entity.TaskId,
-                UserName = entity.User.UserName
+                UserName = entity.User.UserName,
+                CreatedOn = entity.CreatedOn
             };
         }
     }

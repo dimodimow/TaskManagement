@@ -20,19 +20,19 @@ namespace TaskManagement.Data.Extentions
                 new TypeComment
                 {
                      Id = 1,
-                     Type = "neznam"
+                     Type = "Hint"
                 },
 
                 new TypeComment
                 {
                      Id = 2,
-                     Type = "neznam"
+                     Type = "Question"
                 },
 
                 new TypeComment
                 {
                      Id = 3,
-                     Type = "neznam"
+                     Type = "Important"
                 },
             };
         }

@@ -1,0 +1,38 @@
+﻿@model CommentViewModel
+
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Add Comment</h1>
+
+<form id="createComment" asp-controller="Comment" asp-action="CreateComment" asp-route-id="@Model.Id" method="post">
+
+    <div class="form-group row-cols-sm-5">
+        <label asp-for="Text" class="control-label"></label>
+        <input asp-for="Text" class="form-control" />
+        <span asp-validation-for="Text" class="text-danger"></span>
+        <input type="hidden" name="taskId" value="@Model.TaskId" />
+    </div>
+
+    <div class="select">
+        <select asp-for="TypeCommentId">
+            <option selected disabled>Comment Type</option>
+            <option value="1">Hint</option>
+            <option value="2">Question</option>
+            <option value="3">Important</option>
+        </select>
+    </div>
+
+    <div class="form-group row-cols-sm-5">
+        <div>
+            <input asp-for="ReminderDate" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+</form>

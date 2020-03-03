@@ -3,13 +3,12 @@
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1>Edit</h1>
+<h1>Edit task</h1>
 
-<h4>Theatre</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form  asp-controller="Task" asp-action="Edit" method="post">
+        <form asp-controller="Task" asp-action="Edit" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
 
@@ -27,6 +26,13 @@
                 <label asp-for="DueTime" class="control-label">DueTime</label>
                 <input asp-for="DueTime" class="form-control" />
                 <span asp-validation-for="DueTime" class="text-danger"></span>
+            </div>
+            <div class="select">
+                <select asp-for="StatusTask">
+                    <option selected disabled>Task Type</option>
+                    <option value="1">Open</option>
+                    <option value="3">Closed</option>
+                </select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save the changes" class="btn btn-primary" />

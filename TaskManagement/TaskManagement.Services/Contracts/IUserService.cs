@@ -8,7 +8,7 @@ namespace TaskManagement.Services
     public interface IUserService
     {
         Task<List<UserProxyViewModel>> GetAllUsersAsync();
-        Task<List<UserProxyViewModel>> GetSelectedUsersAsync();
+        Task<List<UserProxyViewModel>> GetSelectedUsersAsync(Guid taskid);
         Task<List<UserProxyViewModel>> GetAllUsersForTaskAsync(Guid taskid);
     }
 }

@@ -35,12 +35,15 @@ namespace TaskManagement.Services
             }; 
             foreach(var selectedUser in selectedUsers)
             {
-                var userTask = new UserTask
+                if(selectedUser.IsChecked)
                 {
-                    UserId = selectedUser.UserId,
-                    Task = task
-                };
-                await this.context.AddAsync(userTask);
+                    var userTask = new UserTask
+                    {
+                        UserId = selectedUser.UserId,
+                        Task = task
+                    };
+                    await this.context.AddAsync(userTask);
+                }
             }
 
             await this.context.Tasks.AddAsync(task);
@@ -48,7 +51,7 @@ namespace TaskManagement.Services
             
             return task;
         }
-        public async Task<Entities.Task> EditTask(Guid taskId, string taskName, string description, DateTime? dueDate, ICollection<UserProxyViewModel> selectedUsers)
+        public async Task<Entities.Task> EditTask(Guid taskId, string taskName, string description, DateTime? dueDate, int statusTaskId ,ICollection<UserProxyViewModel> selectedUsers)
         {
             var task = await this.context.Tasks.SingleOrDefaultAsync(a => a.Id.Equals(taskId));
 
@@ -59,6 +62,7 @@ namespace TaskManagement.Services
                 throw new ArgumentException($"Task with Name: {taskName} already exists!");
             }
 
+            task.StatusTaskId = statusTaskId;
             task.TaskName = taskName;
             task.Description = description;
             task.DueDate = dueDate;

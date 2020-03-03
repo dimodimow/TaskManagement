@@ -1,0 +1,39 @@
+﻿@model CommentViewModel
+
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Comment" asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="UserId" />
+
+            <div class="form-group">
+                <label asp-for="Text" class="control-label">Text</label>
+                <input asp-for="Text" class="form-control" />
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+            <div>
+                <input asp-for="ReminderDate" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control" />
+            </div>
+            <div class="select">
+                <select asp-for="TypeCommentId">
+                    <option selected disabled>Comment Type</option>
+                    <option value="1">Hint</option>
+                    <option value="2">Question</option>
+                    <option value="3">Important</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save the changes" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

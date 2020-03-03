@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using TaskManagement.Data.Context;
 using TaskManagement.Entities;
@@ -14,14 +13,16 @@ namespace TaskManagement.Services
    public class CommentService : ICommentService
     {
         private readonly TaskContext context;
-        public CommentService(TaskContext context)
+        private readonly ITaskService taskService;
+        public CommentService(TaskContext context, ITaskService taskService)
         {
             this.context = context;
+            this.taskService = taskService;
         }
-        public async Task<Comment> CreateComment(string text, string userId, DateTime? reminderDate, int typeCommentId)
+        public async Task<Comment> CreateComment(string text, string userId,Guid taskId, DateTime? reminderDate, int typeCommentId)
         {
             ValidationComment.ValidateCommentTextIfIsNullOrEmpty(text);
-
+           Entities.Task findTask = await this.taskService.FindTaskById(taskId);
             var currentUser = await this.context.Users
                 .FirstOrDefaultAsync(u => u.Id == userId);
 
@@ -32,6 +33,8 @@ namespace TaskManagement.Services
                     Id = commentId,
                     Text = text,
                     UserId = userId,
+                    Task = findTask,
+                    TaskId = taskId,
                     CreatedOn = DateTime.Now,
                     TypeCommentId = typeCommentId,
                     User = currentUser,
@@ -48,10 +51,18 @@ namespace TaskManagement.Services
 
             return comment;
         }
+        public async Task<List<Comment>> SearchAllComments(int taskId, string text)
+        {
+            return await this.context.Comments
+                .Include(x => x.Task)
+                .Include(x=>x.User)
+                .Where(x => x.TypeCommentId == taskId && x.Text.Contains(text?? string.Empty))
+                .ToListAsync();
+        }
         public async Task<List<Comment>> GetAllComments(Guid taskId)
         {
             return await this.context.Comments
-                .Include(x => x.User.UserName)
+                .Include(x => x.User)
                 .Where(x => x.TaskId == taskId)
                 .ToListAsync();
         }
@@ -69,7 +80,14 @@ namespace TaskManagement.Services
             return true;
         }
 
-        public async Task<Comment> EditComment(Guid commentId, string text, string userId, DateTime? reminderDate)
+        public async Task<Comment> FindCommentById(Guid id)
+        {
+            var comment = await this.context.Comments.Include(x => x.User).FirstOrDefaultAsync(x => x.Id == id);
+
+            return comment;
+        }
+
+        public async Task<Comment> EditComment(Guid commentId, string text, string userId, int commentTypeId, DateTime? reminderDate)
         {
             ValidationComment.ValidateCommentTextIfIsNullOrEmpty(text);
             var comment = await this.context.Comments.Include(x=>x.Task).FirstOrDefaultAsync(c => c.Id == commentId);
@@ -79,14 +97,8 @@ namespace TaskManagement.Services
                  throw new ArgumentException("Comment does not exist");
             }
 
-
-            //da se premesti v controlera predi da idesh na edit ekrana, proverkata tr e predvaritelno
-            if (comment.UserId != userId)
-            {
-                throw new ArgumentException("User can not edit this comment because somebody else. ");
-            }
-
             comment.Text = text;
+            comment.TypeCommentId = commentTypeId;
             comment.ModifiedOn = DateTime.Now;
             comment.ReminderDate = reminderDate;
             if(reminderDate != null && comment.ReminderDate != reminderDate)

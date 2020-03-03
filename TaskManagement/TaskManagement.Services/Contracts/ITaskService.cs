@@ -12,6 +12,6 @@ namespace TaskManagement.Services.Contracts
         Task<List<Entities.Task>> GetAllAsync();
         Task<bool> DeleteTask(Guid taskId);
         public Task<Entities.Task> FindTaskById(Guid id);
-        Task<Entities.Task> EditTask(Guid taskId, string taskName, string description, DateTime? dueDate, ICollection<UserProxyViewModel> selectedUsers);
+        Task<Entities.Task> EditTask(Guid taskId, string taskName, string description, DateTime? dueDate, int statusTaskId, ICollection<UserProxyViewModel> selectedUsers);
     }
 }

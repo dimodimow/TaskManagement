@@ -42,9 +42,9 @@ namespace TaskManagement.Services
         /// Returns all selected users for this task
         /// </summary>
         /// <returns></returns>
-        public async Task<List<UserProxyViewModel>> GetSelectedUsersAsync()
+        public async Task<List<UserProxyViewModel>> GetSelectedUsersAsync(Guid taskId)
         {
-            return await this.context.UserTasks.Include(x => x.User).Select(x => new UserProxyViewModel { UserId = x.User.Id, IsChecked = true, UserName = x.User.UserName }).ToListAsync();
+            return await this.context.UserTasks.Include(x => x.User).Where(x=> x.TaskId == taskId).Select(x => new UserProxyViewModel { UserId = x.User.Id, IsChecked = true, UserName = x.User.UserName }).ToListAsync();
         }
 
     }

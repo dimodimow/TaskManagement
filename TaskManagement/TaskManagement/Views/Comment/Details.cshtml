@@ -1,0 +1,74 @@
+﻿@model IEnumerable<CommentViewModel>
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form class="form-inline my-2 my-lg-0" asp-action="Details" asp-controller="Comment" method="get">
+    <div style="float:left">
+        <h1>Comments</h1>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                User
+            </th>
+            <th>
+                Comment
+            </th>
+            <th>
+                Reminder Date
+            </th>
+            <th>
+                Comment Type
+            </th>
+            <th>
+                Created
+            </th>
+            <th>
+                Edit
+            </th>
+            <th>
+                Delete
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ReminderDate)
+            </td>
+
+            <td>
+                @(((CommentType)item.TypeCommentId).ToString())
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                <a asp-controller="Comment" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+            </td>
+            <td>
+                <a asp-controller="Comment" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+            <td>
+                <a asp-controller="Task" asp-action="Details" asp-route-id="@item.TaskId">Go to Task</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
