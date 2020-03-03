@@ -1,2 +1,27 @@
 # TaskManagement
 Web app based on ASP.NET Core MVC 3.1 for task management.
+
+# Project Description
+* With Manager role every feauture is available : Create Task, Edit Task, Create Comment, Edit Comment, Delete Comment
+
+* Employee can : Edit Comments, Edit Task, Create Comments
+
+* Each task have name, description,	task Status, task type, list with users(employees), next action date
+* Each comment have comment, date added, comment type, reminder date
+* To login with Manager use these credentials : 
+
+
+
+```
+UserName: dimo@manager.com
+Password: 12345
+```
+* To login with Employee use these credentials : 
+```
+UserName: pesho@employee.com or gosho@employee.com
+Password: 12345
+```
+# Built With
+* [ASP.NET](https://dotnet.microsoft.com/apps/aspnet)- Asp.Net Core Mvc
+* EntityFrameworkCore
+* MSSQL
