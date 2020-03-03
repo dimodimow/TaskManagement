@@ -1,0 +1,64 @@
+﻿@model TaskViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h1>Create task</h1>
+
+
+<div class="row">
+    <div class="col-md-10">
+        <form asp-controller="Task" asp-action="Create" method="post">
+            <div class="form-group">
+                <label asp-for="TaskName" class="control-label">Name of the task</label>
+                <input asp-for="TaskName" class="form-control" />
+                <span asp-validation-for="TaskName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Description</label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div>
+                <input asp-for="DueTime" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control" />
+            </div>
+            <div class="select">
+                <select asp-for="TypeTask">
+                    <option selected disabled>Task Type</option>
+                    <option value="1">Bug</option>
+                    <option value="2">Task</option>
+                    <option value="3">Improvement</option>
+                    <option value="4">Research</option>
+                </select>
+            </div>
+
+
+
+            @using (Html.BeginForm())
+            {<div>
+                    Users:
+                </div>
+                for (int i = 0; i < @Model.AllUsers.Count; i++)
+                {
+                    <div>
+
+                        @Html.EditorFor(model => model.AllUsers[i].IsChecked)
+                        @Html.HiddenFor(model => model.AllUsers[i].UserId)
+                        @Html.DisplayFor(model => model.AllUsers[i].UserName)
+                    </div>
+                }
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Create Task</button>
+                </div>
+            }
+        </form>
+
+    </div>
+</div>
+
+
