@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 
 namespace TaskManagement.Services.Util
 {
@@ -7,7 +6,7 @@ namespace TaskManagement.Services.Util
     {
         public static void ValidateTaskNameIfIsNull(string name)
         {
-            if (name == null)
+            if (string.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentException("Task name can not be null");
             }
