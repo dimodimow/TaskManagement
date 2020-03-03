@@ -38,6 +38,10 @@ namespace TaskManagement.Services
                     ReminderDate = reminderDate
                 };
 
+            if (reminderDate != null)
+            {
+                comment.Task.NextActionDate = reminderDate;
+            }
 
             await this.context.Comments.AddAsync(comment);
             await this.context.SaveChangesAsync();
