@@ -10,7 +10,7 @@ using TaskManagement.Data.Context;
 namespace TaskManagement.Data.Migrations
 {
     [DbContext(typeof(TaskContext))]
-    [Migration("20200302124107_Initial")]
+    [Migration("20200303074257_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -267,7 +267,7 @@ namespace TaskManagement.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DueDate")
+                    b.Property<DateTime?>("DueDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
@@ -443,13 +443,13 @@ namespace TaskManagement.Data.Migrations
                         {
                             Id = "69e7930c-3df5-4261-99cf-0352eb018a91",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "457356ea-936d-4522-9962-bbda4449eb87",
+                            ConcurrencyStamp = "fcb0c257-9305-47f4-a5d2-462647c1eb78",
                             Email = "dimo@manager.com",
                             EmailConfirmed = false,
                             LockoutEnabled = true,
                             NormalizedEmail = "DIMO@MANAGER.COM",
                             NormalizedUserName = "DIMO@MANAGER.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENnyIrFyj2n6bTLduT/DAqwDuLp+XGZvkfEBXpFvWQR9eEUGN5ALcvQyKbjo3+G49w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECqIl2pohxIaCDEIIq8pR0QkAU6cKa2cCJWXxYyFrk8iR7htfJ9Bbig8IVx6Xy2Gvg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXN",
                             TwoFactorEnabled = false,
@@ -459,13 +459,13 @@ namespace TaskManagement.Data.Migrations
                         {
                             Id = "9009a034-7f66-455f-b76f-4f873dc93741",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b04e01fd-4817-4308-af85-00280fe23868",
+                            ConcurrencyStamp = "9504e0e3-3879-4c5e-a465-de627dad57d0",
                             Email = "gosho@employee.com",
                             EmailConfirmed = false,
                             LockoutEnabled = true,
                             NormalizedEmail = "GOSHO@EMPLOYEE.COM",
                             NormalizedUserName = "GOSHO@EMPLOYEE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGr5oOZhaOTReZa9CCaQ+KaEIoYOVcstJdB6+N+JEHp4A2qemIZjMmgXXcCBBvy3cQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELQoquNnP9HBlKqzjjao9wnarW3lLM4zRtD15qGM4QyJxc275S+OPncjeHs+6md0Kw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNUUV5PVYBHGXN",
                             TwoFactorEnabled = false,
@@ -475,13 +475,13 @@ namespace TaskManagement.Data.Migrations
                         {
                             Id = "4a55904b-910e-46c3-8df7-a138a2b73a8a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "382b084d-36f0-4485-a4e1-6ce540629637",
+                            ConcurrencyStamp = "40a06098-82fc-40d5-a76e-e7be362e5419",
                             Email = "pesho@employee.com",
                             EmailConfirmed = false,
                             LockoutEnabled = true,
                             NormalizedEmail = "PESHO@EMPLOYEE.COM",
                             NormalizedUserName = "PESHO@EMPLOYEE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPwI6azq0HAIA3Y5t0KFNSLHLWy2K1XBQizh0uH1S0rH9Lnw1kbkP1cSDlBDRFR1iQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEH0SkHg8ZqXfuy+BUkN4PhhoO9idURkex2Y3UoWrJlnv5GWsY6SU044xqtq7fTusRA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNULV5PVYBHGXN",
                             TwoFactorEnabled = false,
@@ -514,14 +514,14 @@ namespace TaskManagement.Data.Migrations
                         new
                         {
                             Id = "a5e38752-84ae-4352-a0b6-bf47b3fd460a",
-                            ConcurrencyStamp = "452cd0d2-e6b8-4444-bf4d-66286bdf93f2",
+                            ConcurrencyStamp = "181c9683-83eb-4d89-b5b7-53d4af967af4",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
                             Id = "d90e75c6-7da9-490e-aeb0-3d8c4827e193",
-                            ConcurrencyStamp = "253c6fcb-80d8-4407-8454-7d7231f4e967",
+                            ConcurrencyStamp = "7d525c8c-75a9-481a-8a38-1e1009389d1d",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });

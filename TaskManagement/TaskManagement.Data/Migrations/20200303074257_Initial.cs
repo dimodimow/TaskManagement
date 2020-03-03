@@ -202,7 +202,7 @@ namespace TaskManagement.Data.Migrations
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     TaskName = table.Column<string>(nullable: true),
-                    DueDate = table.Column<DateTime>(nullable: false),
+                    DueDate = table.Column<DateTime>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     NextActionDate = table.Column<DateTime>(nullable: true),
                     TypeTaskId = table.Column<int>(nullable: false),
@@ -300,8 +300,8 @@ namespace TaskManagement.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Discriminator", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "a5e38752-84ae-4352-a0b6-bf47b3fd460a", "452cd0d2-e6b8-4444-bf4d-66286bdf93f2", "UserRole", "Manager", "MANAGER" },
-                    { "d90e75c6-7da9-490e-aeb0-3d8c4827e193", "253c6fcb-80d8-4407-8454-7d7231f4e967", "UserRole", "Employee", "EMPLOYEE" }
+                    { "a5e38752-84ae-4352-a0b6-bf47b3fd460a", "181c9683-83eb-4d89-b5b7-53d4af967af4", "UserRole", "Manager", "MANAGER" },
+                    { "d90e75c6-7da9-490e-aeb0-3d8c4827e193", "7d525c8c-75a9-481a-8a38-1e1009389d1d", "UserRole", "Employee", "EMPLOYEE" }
                 });
 
             migrationBuilder.InsertData(
@@ -309,9 +309,9 @@ namespace TaskManagement.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "69e7930c-3df5-4261-99cf-0352eb018a91", 0, "457356ea-936d-4522-9962-bbda4449eb87", "dimo@manager.com", false, true, null, "DIMO@MANAGER.COM", "DIMO@MANAGER.COM", "AQAAAAEAACcQAAAAENnyIrFyj2n6bTLduT/DAqwDuLp+XGZvkfEBXpFvWQR9eEUGN5ALcvQyKbjo3+G49w==", null, false, "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXN", false, "dimo@manager.com" },
-                    { "9009a034-7f66-455f-b76f-4f873dc93741", 0, "b04e01fd-4817-4308-af85-00280fe23868", "gosho@employee.com", false, true, null, "GOSHO@EMPLOYEE.COM", "GOSHO@EMPLOYEE.COM", "AQAAAAEAACcQAAAAEGr5oOZhaOTReZa9CCaQ+KaEIoYOVcstJdB6+N+JEHp4A2qemIZjMmgXXcCBBvy3cQ==", null, false, "7I5VNHIJTSZNOT3KDWKNUUV5PVYBHGXN", false, "gosho@employee.com" },
-                    { "4a55904b-910e-46c3-8df7-a138a2b73a8a", 0, "382b084d-36f0-4485-a4e1-6ce540629637", "pesho@employee.com", false, true, null, "PESHO@EMPLOYEE.COM", "PESHO@EMPLOYEE.COM", "AQAAAAEAACcQAAAAEPwI6azq0HAIA3Y5t0KFNSLHLWy2K1XBQizh0uH1S0rH9Lnw1kbkP1cSDlBDRFR1iQ==", null, false, "7I5VNHIJTSZNOT3KDWKNULV5PVYBHGXN", false, "pesho@employee.com" }
+                    { "69e7930c-3df5-4261-99cf-0352eb018a91", 0, "fcb0c257-9305-47f4-a5d2-462647c1eb78", "dimo@manager.com", false, true, null, "DIMO@MANAGER.COM", "DIMO@MANAGER.COM", "AQAAAAEAACcQAAAAECqIl2pohxIaCDEIIq8pR0QkAU6cKa2cCJWXxYyFrk8iR7htfJ9Bbig8IVx6Xy2Gvg==", null, false, "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXN", false, "dimo@manager.com" },
+                    { "9009a034-7f66-455f-b76f-4f873dc93741", 0, "9504e0e3-3879-4c5e-a465-de627dad57d0", "gosho@employee.com", false, true, null, "GOSHO@EMPLOYEE.COM", "GOSHO@EMPLOYEE.COM", "AQAAAAEAACcQAAAAELQoquNnP9HBlKqzjjao9wnarW3lLM4zRtD15qGM4QyJxc275S+OPncjeHs+6md0Kw==", null, false, "7I5VNHIJTSZNOT3KDWKNUUV5PVYBHGXN", false, "gosho@employee.com" },
+                    { "4a55904b-910e-46c3-8df7-a138a2b73a8a", 0, "40a06098-82fc-40d5-a76e-e7be362e5419", "pesho@employee.com", false, true, null, "PESHO@EMPLOYEE.COM", "PESHO@EMPLOYEE.COM", "AQAAAAEAACcQAAAAEH0SkHg8ZqXfuy+BUkN4PhhoO9idURkex2Y3UoWrJlnv5GWsY6SU044xqtq7fTusRA==", null, false, "7I5VNHIJTSZNOT3KDWKNULV5PVYBHGXN", false, "pesho@employee.com" }
                 });
 
             migrationBuilder.InsertData(
