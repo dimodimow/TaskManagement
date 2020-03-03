@@ -1,0 +1,95 @@
+﻿@model TaskViewModel
+
+@using TaskManagement.Entities.Common
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+
+@if (TempData["Error"] != null)
+{
+<div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-danger" role="alert">
+            @TempData["Error"]
+        </div>
+    </div>
+</div>
+}
+<div class="shadow p-3 mb-5 bg-white rounded">
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.TaskName)
+            </dt>
+            <dd class="col-sm-9" style="overflow-wrap:break-word">
+                @Html.DisplayFor(model => model.TaskName)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd class="col-sm-9" style="overflow-wrap:break-word">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.DueTime)
+            </dt>
+            <dd class="col-sm-9" style="overflow-wrap:break-word">
+                @Html.DisplayFor(model => model.DueTime)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.TypeTask)
+            </dt>
+            <dd class="col-sm-9" style="overflow-wrap:break-word">
+                @(((TaskType)Model.TypeTask).ToString())
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.StatusTask)
+            </dt>
+            <dd class="col-sm-9" style="overflow-wrap:break-word">
+
+                @(((TaskStatuses)Model.StatusTask).ToString())
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.NextActionDate)
+            </dt>
+            <dd class="col-sm-9" style="overflow-wrap:break-word">
+                @Html.DisplayFor(model => model.NextActionDate)
+            </dd>
+            <dd class="col-sm-9" style="overflow-wrap:break-word">
+
+                @using (Html.BeginForm())
+
+                {<div>
+                        Users:
+
+                    </div>
+                    for (int i = 0; i < @Model.AllUsers.Count; i++)
+                    {
+                        <div>
+
+                            @Html.HiddenFor(model => model.AllUsers[i].UserId)
+                            @Html.DisplayFor(model => model.AllUsers[i].UserName)
+                        </div>
+                    }
+                }
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-controller="Task" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    </div>
+</div>
+<div>
+    <a asp-controller="Task" asp-action="Index">Back to Tasks</a>
+</div>
+
