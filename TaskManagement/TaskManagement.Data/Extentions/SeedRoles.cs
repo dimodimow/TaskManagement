@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using TaskManagement.Entities;
 
 namespace TaskManagement.Data.Extentions

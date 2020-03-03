@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<CommentViewModel>
 
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -32,43 +35,50 @@
             <th>
                 Edit
             </th>
-            <th>
-                Delete
-            </th>
+            @if (User.IsInRole("Manager"))
+            {
+                <th>
+                    Delete
+                </th>
+            }
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Text)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Text)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.ReminderDate)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReminderDate)
+                </td>
 
-            <td>
-                @(((CommentType)item.TypeCommentId).ToString())
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedOn)
-            </td>
-            <td>
-                <a asp-controller="Comment" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-            </td>
-            <td>
-                <a asp-controller="Comment" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-            <td>
-                <a asp-controller="Task" asp-action="Details" asp-route-id="@item.TaskId">Go to Task</a>
-            </td>
-        </tr>
+                <td>
+                    @(((CommentType)item.TypeCommentId).ToString())
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+                <td>
+                    <a asp-controller="Comment" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                </td>
+                @if (User.IsInRole("Manager"))
+                {
+                    <td>
+                        <a asp-controller="Comment" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                }
+
+                <td>
+                    <a asp-controller="Task" asp-action="Details" asp-route-id="@item.TaskId">Go to Task</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>

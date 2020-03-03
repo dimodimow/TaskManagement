@@ -17,6 +17,7 @@ namespace TaskManagement.Web.Mappers
                 StatusTask = entity.StatusTaskId,
                 TypeTask = entity.TypeTaskId,
                 NextActionDate = entity.NextActionDate,
+                CreatedOn = entity.CreatedOn,
                 AllUsers = new List<UserProxyViewModel>()
             };
         }

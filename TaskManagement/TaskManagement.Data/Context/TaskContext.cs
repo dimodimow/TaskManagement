@@ -34,7 +34,6 @@ namespace TaskManagement.Data.Context
             #endregion
 
             modelBuilder.Roles();
-            //modelBuilder.EmployeeStatus();
             modelBuilder.TaskStatus();
             modelBuilder.CommentType();
             modelBuilder.TaskType();

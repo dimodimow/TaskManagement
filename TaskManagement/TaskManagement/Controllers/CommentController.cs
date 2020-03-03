@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TaskManagement.Entities;
 using TaskManagement.Services.Contracts;
@@ -103,6 +104,7 @@ namespace TaskManagement.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Delete(Guid Id)
         {
             if (!this.ModelState.IsValid)

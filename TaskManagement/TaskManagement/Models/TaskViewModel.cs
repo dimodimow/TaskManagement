@@ -23,5 +23,7 @@ namespace TaskManagement.Web.Models
         [Display(Name = "Status")]
         public int StatusTask { get; set; }
         public DateTime? NextActionDate { get; set; }
+        [Display(Name = "Created")]
+        public DateTime? CreatedOn { get; set; }
     }
 }

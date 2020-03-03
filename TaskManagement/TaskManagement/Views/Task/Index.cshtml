@@ -40,28 +40,34 @@
                             Status
                         </th>
                         <th>
+                            Created
+                        </th>
+                        <th>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TaskName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DueTime)
-                            </td>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TaskName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DueTime)
+                        </td>
 
-                            <td>@(((TaskType)item.TypeTask).ToString())</td>
+                        <td>@(((TaskType)item.TypeTask).ToString())</td>
 
-                            <td>@(((TaskStatuses)item.StatusTask).ToString())</td>
+                        <td>@(((TaskStatuses)item.StatusTask).ToString())</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedOn)
+                        </td>
 
-                            <td>
-                               <a class="btn btn-primary" asp-controller="Task" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                            </td>
-                        </tr>
+                        <td>
+                            <a class="btn btn-primary" asp-controller="Task" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>
