@@ -7,7 +7,7 @@ namespace TaskManagement.Entities
     public class Task : BaseEntity
     {
         public string TaskName { get; set; }
-        public DateTime DueDate { get; set; }
+        public DateTime? DueDate { get; set; }
         public string Description { get; set; }
         public ICollection<UserTask> UserTasks { get; set; }
         public DateTime? NextActionDate { get; set; }
