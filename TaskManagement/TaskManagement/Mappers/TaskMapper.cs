@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using TaskManagement.Entities;
 using TaskManagement.Web.Mappers.Contracts;
 using TaskManagement.Web.Models;
 
@@ -11,14 +10,14 @@ namespace TaskManagement.Web.Mappers
         {
             return new TaskViewModel
             {
+                Id = entity.Id,
                 TaskName = entity.TaskName,
                 Description = entity.Description,
                 DueTime = entity.DueDate,
-                StatusTaskId = entity.StatusTaskId,
-                TypeTaskId = entity.TypeTaskId,
+                StatusTask = entity.StatusTaskId,
+                TypeTask = entity.TypeTaskId,
                 NextActionDate = entity.NextActionDate,
-                AllUsers = new List<User>(),
-                SelectedUsers = new List<User>()
+                AllUsers = new List<UserProxyViewModel>()
             };
         }
     }
