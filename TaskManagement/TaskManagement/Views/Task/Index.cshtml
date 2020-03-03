@@ -12,11 +12,11 @@
 @if (User.IsInRole("Manager"))
 {
 
-<div class="col col-sm-2 text-left ">
-    <p>
-        <a class="btn btn-outline-primary" title="Create a task" asp-controller="Task" asp-action="Create"><i class="fas fa-book"></i><b> Create</b></a>
-    </p>
-</div>
+    <div class="col col-sm-2 text-left ">
+        <p>
+            <a class="btn btn-outline-primary" title="Create a task" asp-controller="Task" asp-action="Create"><i class="fas fa-book"></i><b> Create</b></a>
+        </p>
+    </div>
 
 }
 
@@ -54,21 +54,22 @@
                                 @Html.DisplayFor(modelItem => item.DueTime)
                             </td>
 
-                            <td>@(((TaskType)item.TypeTaskId).ToString())</td>
+                            <td>@(((TaskType)item.TypeTask).ToString())</td>
 
-                            <td>@(((TaskStatuses)item.StatusTaskId).ToString())</td>
+                            <td>@(((TaskStatuses)item.StatusTask).ToString())</td>
 
                             <td>
-                                <a asp-controller="Theatre" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-
-                                <a asp-controller="Theatre" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                    <a asp-controller="Task" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                              
+                                @if (User.IsInRole("Manager"))
+                                {
+                                    <a asp-controller="Task" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                }
                             </td>
                         </tr>
                     }
                 </tbody>
             </table>
-            @*</div>*@
         </div>
-        @*</div>*@
     </div>
 </div>
