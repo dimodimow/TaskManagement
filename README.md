@@ -6,8 +6,8 @@ Web app based on ASP.NET Core MVC 3.1 for task management.
 
 * Employee can : Edit Comments, Edit Task, Create Comments
 
-* Each task have name, description,	task Status, task type, list with users(employees), next action date
-* Each comment have comment, date added, comment type, reminder date
+* Each task has name, description,	task Status, task type, list with users(employees), next action date
+* Each comment has comment, date added, comment type, reminder date
 * To login with Manager use these credentials : 
 
 
