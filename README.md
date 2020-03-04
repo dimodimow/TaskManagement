@@ -21,7 +21,7 @@ Password: 12345
 UserName: pesho@employee.com or gosho@employee.com
 Password: 12345
 ```
-* Search View: can search with 2 arguments, by Comment Type and text
+* Search View: can search with 2 arguments, by Comment Type and text (text search returns all results containing the text)
 # Built With
 * [ASP.NET](https://dotnet.microsoft.com/apps/aspnet)- Asp.Net Core Mvc
 * EntityFrameworkCore
