@@ -10,7 +10,7 @@ using TaskManagement.Data.Context;
 namespace TaskManagement.Data.Migrations
 {
     [DbContext(typeof(TaskContext))]
-    [Migration("20200303231847_Initial")]
+    [Migration("20200309081538_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -443,13 +443,13 @@ namespace TaskManagement.Data.Migrations
                         {
                             Id = "69e7930c-3df5-4261-99cf-0352eb018a91",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7c7ec840-93f2-46bd-9b4c-85e71b948004",
+                            ConcurrencyStamp = "b984ef85-f8ce-4b7c-b6bc-c59fa8038460",
                             Email = "dimo@manager.com",
                             EmailConfirmed = false,
                             LockoutEnabled = true,
                             NormalizedEmail = "DIMO@MANAGER.COM",
                             NormalizedUserName = "DIMO@MANAGER.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAELLhP6K9rOnHpymUrzbM1pTljpD9fF/F7+hIuj7tCQjNWVC3MBN845YO2SsHg3RnGg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIUaQVjTC1HA692L/wSo8vG8nKLmduC4uzN6y9bg8tjGa/NfqU8Gsrre/0tvSX8UKQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXN",
                             TwoFactorEnabled = false,
@@ -459,13 +459,13 @@ namespace TaskManagement.Data.Migrations
                         {
                             Id = "9009a034-7f66-455f-b76f-4f873dc93741",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d52bf9b3-c68d-45d3-bd6b-0eac9fcf0521",
+                            ConcurrencyStamp = "24ccb6b2-c60c-4bef-ad42-f65ca65dcb89",
                             Email = "gosho@employee.com",
                             EmailConfirmed = false,
                             LockoutEnabled = true,
                             NormalizedEmail = "GOSHO@EMPLOYEE.COM",
                             NormalizedUserName = "GOSHO@EMPLOYEE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEG1psXBjeiUpmQ1UutyYa8fJESIfhun5H+VEsbQ0tkUToHUenInxHRWAbTLdeErtDA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEsfsYXHpvkC/uuKKJqZZoD5xgtybbdFW/7HmvMR3/a1jxwlCuo1tyq8diWKOnWnGA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNUUV5PVYBHGXN",
                             TwoFactorEnabled = false,
@@ -475,13 +475,13 @@ namespace TaskManagement.Data.Migrations
                         {
                             Id = "4a55904b-910e-46c3-8df7-a138a2b73a8a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f1175919-8966-442f-8b54-b0949aed8319",
+                            ConcurrencyStamp = "1afc5b32-7f32-4455-96b0-4b46a2b8f9fe",
                             Email = "pesho@employee.com",
                             EmailConfirmed = false,
                             LockoutEnabled = true,
                             NormalizedEmail = "PESHO@EMPLOYEE.COM",
                             NormalizedUserName = "PESHO@EMPLOYEE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBwsyXPH7x7HWpcp6tfLr7531QslumZEUGuRKciY39iTphWEE6wIYr7y8JjDY+KyCA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEG2mf2nhAFa8lRH4GLhr+xqswwVxRWJNQ6OoG2SkJAmr2mATzDg5yGB7p3JUZUJ76A==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7I5VNHIJTSZNOT3KDWKNULV5PVYBHGXN",
                             TwoFactorEnabled = false,
@@ -514,14 +514,14 @@ namespace TaskManagement.Data.Migrations
                         new
                         {
                             Id = "a5e38752-84ae-4352-a0b6-bf47b3fd460a",
-                            ConcurrencyStamp = "b9f7f6c7-90cb-4a1c-bfab-113980e7e4f3",
+                            ConcurrencyStamp = "e138bd3f-2cd0-4347-ba24-7786588f3ff5",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
                             Id = "d90e75c6-7da9-490e-aeb0-3d8c4827e193",
-                            ConcurrencyStamp = "33987937-4928-4669-a36d-8843cb43531f",
+                            ConcurrencyStamp = "3d4edf87-ee44-4867-9666-9a7593f49e68",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });

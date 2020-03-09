@@ -300,8 +300,8 @@ namespace TaskManagement.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Discriminator", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "a5e38752-84ae-4352-a0b6-bf47b3fd460a", "b9f7f6c7-90cb-4a1c-bfab-113980e7e4f3", "UserRole", "Manager", "MANAGER" },
-                    { "d90e75c6-7da9-490e-aeb0-3d8c4827e193", "33987937-4928-4669-a36d-8843cb43531f", "UserRole", "Employee", "EMPLOYEE" }
+                    { "a5e38752-84ae-4352-a0b6-bf47b3fd460a", "e138bd3f-2cd0-4347-ba24-7786588f3ff5", "UserRole", "Manager", "MANAGER" },
+                    { "d90e75c6-7da9-490e-aeb0-3d8c4827e193", "3d4edf87-ee44-4867-9666-9a7593f49e68", "UserRole", "Employee", "EMPLOYEE" }
                 });
 
             migrationBuilder.InsertData(
@@ -309,9 +309,9 @@ namespace TaskManagement.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "69e7930c-3df5-4261-99cf-0352eb018a91", 0, "7c7ec840-93f2-46bd-9b4c-85e71b948004", "dimo@manager.com", false, true, null, "DIMO@MANAGER.COM", "DIMO@MANAGER.COM", "AQAAAAEAACcQAAAAELLhP6K9rOnHpymUrzbM1pTljpD9fF/F7+hIuj7tCQjNWVC3MBN845YO2SsHg3RnGg==", null, false, "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXN", false, "dimo@manager.com" },
-                    { "9009a034-7f66-455f-b76f-4f873dc93741", 0, "d52bf9b3-c68d-45d3-bd6b-0eac9fcf0521", "gosho@employee.com", false, true, null, "GOSHO@EMPLOYEE.COM", "GOSHO@EMPLOYEE.COM", "AQAAAAEAACcQAAAAEG1psXBjeiUpmQ1UutyYa8fJESIfhun5H+VEsbQ0tkUToHUenInxHRWAbTLdeErtDA==", null, false, "7I5VNHIJTSZNOT3KDWKNUUV5PVYBHGXN", false, "gosho@employee.com" },
-                    { "4a55904b-910e-46c3-8df7-a138a2b73a8a", 0, "f1175919-8966-442f-8b54-b0949aed8319", "pesho@employee.com", false, true, null, "PESHO@EMPLOYEE.COM", "PESHO@EMPLOYEE.COM", "AQAAAAEAACcQAAAAEBwsyXPH7x7HWpcp6tfLr7531QslumZEUGuRKciY39iTphWEE6wIYr7y8JjDY+KyCA==", null, false, "7I5VNHIJTSZNOT3KDWKNULV5PVYBHGXN", false, "pesho@employee.com" }
+                    { "69e7930c-3df5-4261-99cf-0352eb018a91", 0, "b984ef85-f8ce-4b7c-b6bc-c59fa8038460", "dimo@manager.com", false, true, null, "DIMO@MANAGER.COM", "DIMO@MANAGER.COM", "AQAAAAEAACcQAAAAEIUaQVjTC1HA692L/wSo8vG8nKLmduC4uzN6y9bg8tjGa/NfqU8Gsrre/0tvSX8UKQ==", null, false, "7I5VNHIJTSZNOT3KDWKNFUV5PVYBHGXN", false, "dimo@manager.com" },
+                    { "9009a034-7f66-455f-b76f-4f873dc93741", 0, "24ccb6b2-c60c-4bef-ad42-f65ca65dcb89", "gosho@employee.com", false, true, null, "GOSHO@EMPLOYEE.COM", "GOSHO@EMPLOYEE.COM", "AQAAAAEAACcQAAAAEEsfsYXHpvkC/uuKKJqZZoD5xgtybbdFW/7HmvMR3/a1jxwlCuo1tyq8diWKOnWnGA==", null, false, "7I5VNHIJTSZNOT3KDWKNUUV5PVYBHGXN", false, "gosho@employee.com" },
+                    { "4a55904b-910e-46c3-8df7-a138a2b73a8a", 0, "1afc5b32-7f32-4455-96b0-4b46a2b8f9fe", "pesho@employee.com", false, true, null, "PESHO@EMPLOYEE.COM", "PESHO@EMPLOYEE.COM", "AQAAAAEAACcQAAAAEG2mf2nhAFa8lRH4GLhr+xqswwVxRWJNQ6OoG2SkJAmr2mATzDg5yGB7p3JUZUJ76A==", null, false, "7I5VNHIJTSZNOT3KDWKNULV5PVYBHGXN", false, "pesho@employee.com" }
                 });
 
             migrationBuilder.InsertData(
